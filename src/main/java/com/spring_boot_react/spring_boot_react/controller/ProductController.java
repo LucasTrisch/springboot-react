@@ -2,19 +2,21 @@ package com.spring_boot_react.spring_boot_react.controller;
 
 import com.spring_boot_react.spring_boot_react.models.Product;
 import com.spring_boot_react.spring_boot_react.service.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3001")
 @RestController
 @RequestMapping("/api/products")
 public class ProductController {
 
-    @Autowired
     ProductService productService;
+
+    public ProductController(ProductService productService) {
+        this.productService = productService;
+    }
 
     @GetMapping
     public List<Product> getAllProdutos() {
@@ -37,7 +39,7 @@ public class ProductController {
         Optional<Product> productOptional = productService.getProductById(id);
         if (productOptional.isPresent()) {
             Product product = productOptional.get();
-            product.setName(productDetails.getName());
+            product.setNome(productDetails.getNome());
             product.setDescricao(productDetails.getDescricao());
             product.setPreco(productDetails.getPreco());
             return ResponseEntity.ok(productService.updateProduto(product));

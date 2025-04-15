@@ -29,7 +29,7 @@ public class Product {
         return nome;
     }
 
-    public void setNome(String name) {
+    public void setNome(String nome) {
         this.nome = nome;
     }
 
@@ -47,12 +47,5 @@ public class Product {
 
     public void setPreco(double preco) {
         this.preco = preco;
-    }
-
-    public Object getName() {
-        return null;
-    }
-
-    public void setName(Object name) {
     }
 }
